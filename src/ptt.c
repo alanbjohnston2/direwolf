@@ -606,7 +606,7 @@ void export_gpio(int ch, int ot, int invert, int direction)
 
 	char gpio_val[8];
 	if (direction) {
-	  if (invert) {
+	  if (!invert) {
 	    strlcpy (gpio_val, "high", sizeof(gpio_val));
 	  }
 	  else {
@@ -1206,10 +1206,10 @@ void ptt_set (int ot, int chan, int ptt_signal)
  * Inverted output? 
  */
 
-	if (save_audio_config_p->achan[chan].octrl[ot].ptt_invert) {
+	if (!save_audio_config_p->achan[chan].octrl[ot].ptt_invert) {
 	  ptt = ! ptt;
 	}
-	if (save_audio_config_p->achan[chan].octrl[ot].ptt_invert2) {
+	if (!save_audio_config_p->achan[chan].octrl[ot].ptt_invert2) {
 	  ptt2 = ! ptt2;
 	}
 
